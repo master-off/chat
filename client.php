@@ -1,7 +1,11 @@
 <?php
  
-  $address = readline("server: ");
-  $port = readline("port: ");
+  $serverData = readline("enter (server:port) -> ");
+
+$data = explode(":", $serverData);
+$address = $data[0];
+$port = $data[1];
+
   $msg = readline("msg: ");
   $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
    
@@ -15,7 +19,7 @@
     $result .= $read; 
   }
   socket_close($socket);
-   
+  
   echo "Полученный результат:  $result\r\n"; 
    
 ?> 
