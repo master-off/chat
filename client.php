@@ -1,25 +1,21 @@
 <?php
+header('Content-Type:text/html; charset=utf-8');
+$data = readline("enter (ip:port)): ");
+$dataa = explode(":", $data);
+ $address = $dataa[0];
+ $port = $dataa[1];
+ $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+ $connect = socket_connect($socket, $address, $port);
+
+while(true){
+ $msg = readline("sms: ");
+socket_write($socket, $msg, strlen($msg));
+	
+}
  
-  $serverData = readline("enter (server:port) -> ");
-
-$data = explode(":", $serverData);
-$address = $data[0];
-$port = $data[1];
-
-  $msg = readline("msg: ");
-  $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-   
-  socket_connect($socket, $address, $port);
-  socket_write($socket, "GET / HTTP/1.0 TEXT:".$msg."\r\n\r\n");
-   
-  $result = "";
-   
-  while($read = socket_read($socket, 1024))
-  {
-    $result .= $read; 
-  }
-  socket_close($socket);
-  
-  echo "Полученный результат:  $result\r\n"; 
-   
-?> 
+ if(isset($socket))  {
+	echo "Закрываем соединение... ";
+ 	socket_close($socket);
+ 	echo "OK";
+}
+ ?>
