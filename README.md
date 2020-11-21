@@ -6,6 +6,9 @@ Install Termux:
 `pkg install git`
 `git clone https://github.com/master-off/chat.git`
 `cd chat`
+---
+Install Termux Ngrok:
+[Инструкция](https://steemit.com/utopian-io/@faisalamin/how-to-download-install-ngrok-in-android-termux-also-work-for-non-rooted-devices)
 
 ---
 Server:
